@@ -110,10 +110,12 @@ class deviantart {
     );
     
     /**
-     * Array of label ids and texts
+     * Informational Array of labels and ids and texts
      * @var array
      */
     public $dALabel = array(
+    	'username_cs'=>'Case Sensitive dA Username',
+    	
         'fav_visual_artists'=>'Favourite visual artist',
         'fav_musical_artists'=>'Favourite band or musician',
         'fav_movies'=>'Favourite movies',
@@ -203,7 +205,7 @@ class deviantart {
         $tostring = 
         " <h4>".$this->username." on deviantART.com:</h4> \n"
         . "<dl> \n"
-        . "   <dt>\$da = new deviantart('".$this->username."');</dt> \n";
+        . "   <dt>\$da = new deviantart('".$this->deviantID['username_cs']."');</dt> \n";
         
         foreach($this->publicStuff as $name) {
             if(!empty($this->$name))
@@ -284,6 +286,10 @@ class deviantart {
      * TODO: Split to smaller parts
      */
     private function parse_deviantID() {
+        
+        
+        $off = 0;
+        $this->deviantID['username_cs'] = getfrange($this->rawHTML, '<title>', ' on deviantART</title>', $off, FALSE, ENC_CLASS_DEVIANTART);
         
         /* Structure
          <div class="authorative-avatar">
@@ -651,11 +657,13 @@ $username =
 //'HibariAkado'
 //'FlyingSalmon'
 //'Yanirawr'
-'Basistka'
+//'Basistka'
+'xXGrinsekatze'
 //'mistress-illusion'
 //'liviugherman'
 ;
 $da = new deviantart($username);
 echo $da->__tostring(); // echo $da; // identical
+echo "<br /><b>".$da->deviantID['username_cs']."</b>";
 
 ?>

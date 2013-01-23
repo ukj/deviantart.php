@@ -1,0 +1,5 @@
+This class can read deviantART.com user profile page. 
+Name, age, sex, birthday, why I am here, slogan, country, Interests by flag, ID picture. 
+Use RSS, if you want to get programmatically gallery/favorites collection/Journals. 
+
+Show end of class file to see usage examples.
